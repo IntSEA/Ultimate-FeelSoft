@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D4F9E52-459B-4710-8F58-1F892AB3E61E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MainView</RootNamespace>
+    <AssemblyName>MainView</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HomePanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomePanel.designer.cs">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrame.designer.cs">
+      <DependentUpon>MainFrame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Visualization.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Visualization.designer.cs">
+      <DependentUpon>Visualization.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="HomePanel.resx">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrame.resx">
+      <DependentUpon>MainFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Visualization.resx">
+      <DependentUpon>Visualization.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{413bb381-0d6e-4539-ae7f-28eef4e3cea5}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialNetworkConnection\SocialNetworkConnection.csproj">
+      <Project>{9ef5d099-b8b4-4672-a5f7-ad9f2022ba7f}</Project>
+      <Name>SocialNetworkConnection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextualProcessor\TextualProcessor.csproj">
+      <Project>{a3a3618e-8bc9-45c8-bb95-ef8bdcf7416e}</Project>
+      <Name>TextualProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewQualifier\ViewQualifier.csproj">
+      <Project>{9a4222fa-4349-44cd-aae0-0e3baa68fae7}</Project>
+      <Name>ViewQualifier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebScrapper\WebScrapper.csproj">
+      <Project>{1ef59294-5a62-4032-9a14-eeda713a372c}</Project>
+      <Name>WebScrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bannere-elecciones-2018.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Elecciones.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fajardo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\House.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\House1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logotipo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Petro.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
