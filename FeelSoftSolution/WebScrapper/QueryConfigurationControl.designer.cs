@@ -337,7 +337,7 @@ namespace WebScrapper
             this.dtpUntilDate.Name = "dtpUntilDate";
             this.dtpUntilDate.Size = new System.Drawing.Size(365, 20);
             this.dtpUntilDate.TabIndex = 0;
-            this.dtpUntilDate.Value = DateTime.Now.AddDays(1);
+            this.dtpUntilDate.Value = new System.DateTime(2018, 5, 14, 23, 12, 45, 782);
             // 
             // lblTotalPublications
             // 
@@ -358,7 +358,7 @@ namespace WebScrapper
             0});
             this.nudTotalPublications.Location = new System.Drawing.Point(271, 507);
             this.nudTotalPublications.Maximum = new decimal(new int[] {
-            10000,
+            1000000000,
             0,
             0,
             0});

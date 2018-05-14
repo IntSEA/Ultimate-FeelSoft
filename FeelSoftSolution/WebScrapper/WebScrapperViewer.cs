@@ -330,18 +330,7 @@ namespace WebScrapper
 
 
             IQueryConfiguration queryConfiguration = queriesControl.GetCurrentQueryConfiguration();
-            if (queryConfiguration != null)
-            {
-                dataset.BaseName = queryConfiguration.SinceDate.ToShortDateString().Replace("/", "-") + "_" + queryConfiguration.UntilDate.AddDays(-1).ToShortDateString().Replace("/", "-");
-            }
-            else
-            {
-                dataset.BaseName = DateTime.Now.AddDays(-1).ToShortDateString().Replace("/", "-") + "_" + DateTime.Now.ToShortDateString().Replace("/", "-");
-            }
-
-
-
-            string folderName = "..//..//..//Database//LemmatizedPublications";
+                       string folderName = "..//..//..//Database//LemmatizedPublications";
                 dataset.BasePath = folderName + "/";
 
             InvokeHandlers invokeHandlers = new InvokeHandlers(InvokeScrapperHandlers);

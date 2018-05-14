@@ -224,14 +224,13 @@ namespace WebScrapper
         private void AddTotalSearches(IQueryConfiguration queryConfiguration)
         {
             decimal value = nudTotalPublications.Value;
-            if (value > 0 && value <= 10000)
-            {
+            if(value<=int.MaxValue)
+            { 
                 queryConfiguration.MaxPublicationCount = (int)value;
             }
             else
             {
                 queryConfiguration.MaxPublicationCount = 2000;
-
             }
 
         }

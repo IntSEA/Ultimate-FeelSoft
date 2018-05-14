@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Tweetinvi;
 using Tweetinvi.Models;
 
@@ -33,14 +34,20 @@ namespace TwitterConnection
             string secretToken = System.Configuration.ConfigurationManager.AppSettings["secretToken"];
             parseCredential = consumerKey + "|" + consumerSecret + "|" + accessToken + "|" + secretToken;
 
-            Thread authThread = new Thread(()=>
+            //Task task = Task.Run(()=>
+            //{
+            //    Auth.SetUserCredentials(consumerKey, consumerSecret, accessToken, secretToken);
+
+            //});
+            //task.Start();
+            Thread authThread = new Thread(() =>
             {
                 Auth.SetUserCredentials(consumerKey, consumerSecret, accessToken, secretToken);
             }
             );
             authThread.SetApartmentState(ApartmentState.STA);
             authThread.Start();
-           
+
         }
 
         public override IList<IPublication> Search(IList<IQueryConfiguration> queriesConfigurations)

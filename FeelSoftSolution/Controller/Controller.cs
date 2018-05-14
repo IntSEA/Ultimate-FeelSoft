@@ -17,10 +17,9 @@ namespace Controller
         private string path = "..//..//..//Database//LemmatizedPublications";
         private IProcessor processor;
         private ISearchDataSet dataSet;
-        private ISocialNetwork twitter;
-        private ISocialNetwork facebook;
-       // private IAnalityc naiveBayes;
+      
         private DictionaryAn dictionaryAn;
+
         private Dictionary<string, Candidate> candidates;
 
         public Dictionary<string, Candidate> Candidates { get => candidates; set => candidates = value; }

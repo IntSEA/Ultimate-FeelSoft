@@ -76,6 +76,7 @@ namespace SocialNetworkConnection
 
         public void ExportDataSet(int quantity)
         {
+            BaseName = GetDefaultBaseName();
             if (quantity > 0)
             {
                 int totalThreads = publications.Values.Count / quantity;
@@ -93,6 +94,24 @@ namespace SocialNetworkConnection
                 ExportDataSet();
             }
 
+
+        }
+
+        private string GetDefaultBaseName()
+        {
+            string baseName = null ;
+            if (publications.Values.Count > 0)
+            {
+                string initDate = publications.Values.Max(x => x.CreateDate).ToShortDateString().Replace("/","-").Trim();
+                string lastDate = publications.Values.Min(x=> x.CreateDate).ToShortDateString().Replace("/", "-").Trim();
+                baseName = initDate + "_" + lastDate;
+            }
+            if (String.IsNullOrEmpty(baseName))
+            {
+                baseName=DateTime.Now.ToShortDateString().Replace("/", "-").Trim();
+                baseName += ("_" + baseName).Trim();
+            }
+            return baseName;
 
         }
 

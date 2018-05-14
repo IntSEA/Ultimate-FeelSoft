@@ -86,25 +86,29 @@ namespace FacebookConnection
 
 
                 int roundSearchesByPage = totalPublications / datesRange.Count;
-                roundSearchesByPage = roundSearchesByPage < 100 ? roundSearchesByPage :100 ;
-                myQuery.MaxPublicationCount = roundSearchesByPage+15;
+                //roundSearchesByPage = roundSearchesByPage < 100 ? roundSearchesByPage :100 ;
+                //myQuery.MaxPublicationCount = roundSearchesByPage+15;
+
                 SetQueryFields(myQuery, fields);
 
                 foreach (string page in pages)
                 {
-                    for (int i = 0; i < datesRange.Count; i++)
-                    {
-                        myQuery.SinceDate = datesRange[i].AddDays(-1);
-                        myQuery.UntilDate = datesRange[i];
-                        SetDatesRangeInFields(fields, myQuery);
+                    //for (int i = 0; i < datesRange.Count; i++)
+                    //{
+                        //myQuery.SinceDate = datesRange[i];
+                        //myQuery.UntilDate = datesRange[i].AddDays(1);
+
+                            //new DateTime(datesRange[i].Year, datesRange[i].Month, 
+                            //DateTime.DaysInMonth(datesRange[i].Year, datesRange[i].Month)); REALIZE QUERY FOR MONTH
+                        //SetDatesRangeInFields(fields, myQuery);
                        
-                        IList<IPublication> partialPublication = RequestFeedToGraph(page, fields, roundSearchesByPage, myQuery);
+                        IList<IPublication> partialPublication = RequestFeedToGraph(page, fields, totalPublications, myQuery);
                         ((List<IPublication>)publications).AddRange(partialPublication);
                         if (publications.Count > (totalPublications * 2))
                         {
                             break;
                         }
-                    }
+                    //}
                 }
                 publications = FilterPublications(publications, myQuery.Keywords);
                 publications = ReorganizeSearches(publications, totalPublications);
@@ -246,6 +250,7 @@ namespace FacebookConnection
             args.Add("limit", max);
             string fieldsRequest = GetFieldsRequest(queryConfiguration);
             args.Add("fields", fieldsRequest);
+            SetDatesRangeInFields(args,queryConfiguration);
 
            
         }
@@ -307,7 +312,7 @@ namespace FacebookConnection
                             else
                             {
                                 var next = GetNextPublicationsRequest(response);
-                                if (responsesPages.Count < 2 && next!=null)
+                                if (next!=null)
                                 {
                                     
                                     responsesPages.Add(next);
