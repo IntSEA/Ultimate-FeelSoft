@@ -14,7 +14,7 @@ namespace Controller
     public class Controller
     {
         
-        private string path = "..//..//..//Database//LemmatizedPublications";
+        private string path = "..//..//..//LemmatizedPublications";
         private IProcessor processor;
         private ISearchDataSet dataSet;
       
