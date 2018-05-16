@@ -17,7 +17,7 @@ namespace Controller
         private string path = "..//..//..//LemmatizedPublications";
         private IProcessor processor;
         private ISearchDataSet dataSet;
-      
+        private IAnalityc naiveBayes;
         private DictionaryAn dictionaryAn;
 
         private Dictionary<string, Candidate> candidates;
@@ -30,7 +30,7 @@ namespace Controller
             processor = new Processor();
             dataSet = new SearchDataSet();
             dictionaryAn = new DictionaryAn();
-           // naiveBayes = new NaiveAnalytic();
+            naiveBayes = new NaiveAnalytic();
             candidates = new Dictionary<string, Candidate>();
             LoadPublications();
         }
@@ -75,7 +75,7 @@ namespace Controller
             IList<IPublication> publicationsBetweenDates = new List<IPublication>();
             Dictionary<DateTime, double[]> dateAndCalification = new Dictionary<DateTime, double[]>();
 
-            foreach (IPublication publication in Candidates[candidate].Publications)
+            foreach (IPublication publication in candidates[candidate].Publications)
             {
                 if (query.SatisfiesQuery(publication))
                 {
@@ -127,7 +127,7 @@ namespace Controller
                     toQualification.Add(publication.LemmatizedMessage.Split(' '));
                 }
 
-                double[] favorAndDesfavor = new double[2];
+                double[] favorsAndNum = new double[3];
 
                 double favorability = 0.0;
                 double desfavorability = 0.0;
@@ -153,7 +153,7 @@ namespace Controller
                 }
                 else
                 {
-                  /*  foreach (string[] words in toQualification)
+                    foreach (string[] words in toQualification)
                     {
                         int qualification = naiveBayes.Decided(words);
 
@@ -165,15 +165,16 @@ namespace Controller
                         {
                             countNegative++;
                         }
-                    } */
+                    } 
                 }
 
                 favorability = (countPositive / toQualification.Count);
                 desfavorability = (countNegative / toQualification.Count);
-                favorAndDesfavor[0] = favorability;
-                favorAndDesfavor[1] = desfavorability;
+                favorsAndNum[0] = favorability;
+                favorsAndNum[1] = desfavorability;
+                favorsAndNum[2] = group.Count();
 
-                dateAndCalification.Add(group.Key, favorAndDesfavor);
+                dateAndCalification.Add(group.Key, favorsAndNum);
             }
 
             return dateAndCalification;
