@@ -119,9 +119,12 @@ namespace TwitterConnection
             int totalPublications = myQuery.MaxPublicationCount;
             TimeSpan rangeTime = myQuery.UntilDate.Subtract(myQuery.SinceDate);
             int totalDays = (int) (rangeTime.TotalDays == 0 ? 1 : rangeTime.TotalDays+1);            
-            if (totalDays > 10)
+            if (totalDays > 10 || myQuery.UntilDate.CompareTo(DateTime.Now.AddDays(-7))<0)
             {
-                throw new ArgumentException("You can't search longer than a week");
+                //throw new ArgumentException("You can't search longer than a week");
+                totalDays = 7;
+                myQuery.SinceDate = myQuery.UntilDate.AddDays(-7);
+                myQuery.UntilDate = DateTime.Now.AddDays(-7);
             }
             List<DateTime> dates = Enumerable.Range(0,totalDays).Select(x=> myQuery.SinceDate.AddDays(x)).ToList();
             int totalSearchesByDate = queryConfiguration.MaxPublicationCount / totalDays;
