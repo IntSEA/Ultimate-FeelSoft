@@ -135,7 +135,7 @@ namespace TwitterConnection
                 for (int i = 0; i < dates.Count; i++)
                 {
                     myQuery.SinceDate = dates[i];
-                    myQuery.UntilDate = dates[i].AddDays(1);
+                    myQuery.UntilDate = dates[i].AddDays(2);
                     ISearchTweetsParameters parameters = ParseSearchTweetsParameters(myQuery, key);
                     IList<ITweet> tweets = Search.SearchTweets(parameters).ToList();
                     ParseTweets(tweets, publications, queryConfiguration);
@@ -173,11 +173,15 @@ namespace TwitterConnection
         {
             if (queryConfiguration.SinceDate.CompareTo(QueryConfiguration.NONE_DATE) != 0)
             {
-                parameters.Since = queryConfiguration.SinceDate;
+                DateTime since = new DateTime(queryConfiguration.SinceDate.Year,
+                    queryConfiguration.SinceDate.Month, queryConfiguration.SinceDate.Day);
+                parameters.Since = since;
             }
             if (queryConfiguration.UntilDate.CompareTo(QueryConfiguration.NONE_DATE) != 0)
             {
-                parameters.Until = queryConfiguration.UntilDate;
+                DateTime until = new DateTime(queryConfiguration.UntilDate.Year,
+                    queryConfiguration.UntilDate.Month, queryConfiguration.UntilDate.Day);
+                parameters.Until = until;
             }
 
         }

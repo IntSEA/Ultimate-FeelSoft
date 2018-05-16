@@ -48,7 +48,7 @@ namespace SocialNetworkConnection
 
         private void ParseFromQueryFormat(string queryFormat)
         {
-             string[] info = queryFormat.Split(new string[] { "\n" },
+             string[] info = queryFormat.Split(new string[] { "\r\n" },
                StringSplitOptions.None);
             Name = info[0];
             ParseKeywords(info[1]);
