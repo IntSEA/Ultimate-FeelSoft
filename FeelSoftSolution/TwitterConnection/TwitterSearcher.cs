@@ -110,26 +110,32 @@ namespace TwitterConnection
         public override IList<IPublication> SearchPublications(IQueryConfiguration queryConfiguration)
         {
             IQueryConfiguration myQuery = (IQueryConfiguration)queryConfiguration.Clone();
+             if (myQuery.SinceDate.CompareTo(myQuery.UntilDate) > 0)
+            {
+                throw new ArgumentException("until date must be longer than since date ");
+
+            }
             IList<IPublication> publications = new List<IPublication>();
             int totalPublications = myQuery.MaxPublicationCount;
-            DateTime initDate = myQuery.SinceDate;
-            TimeSpan rangeDates = myQuery.UntilDate.Subtract(myQuery.SinceDate);
-            int totalDays = (int)(rangeDates.TotalDays == 0 ? 1 : rangeDates.TotalDays);
-            if (totalDays < 0)
+            TimeSpan rangeTime = myQuery.UntilDate.Subtract(myQuery.SinceDate);
+            int totalDays = (int) (rangeTime.TotalDays == 0 ? 1 : rangeTime.TotalDays+1);            
+            if (totalDays > 10 || myQuery.UntilDate.CompareTo(DateTime.Now.AddDays(-7))<0)
             {
-                throw new ArgumentOutOfRangeException("since date can't be longer than until date");
+                //throw new ArgumentException("You can't search longer than a week");
+                totalDays = 7;
+                myQuery.UntilDate = DateTime.Now;
+                myQuery.SinceDate = myQuery.UntilDate.AddDays(-7);
             }
-            IList<DateTime> datesRange = Enumerable.Range(0, totalDays)
-                .Select(x=> initDate.AddDays(x)).ToList();
+            List<DateTime> dates = Enumerable.Range(0,totalDays).Select(x=> myQuery.SinceDate.AddDays(x)).ToList();
+            int totalSearchesByDate = queryConfiguration.MaxPublicationCount / totalDays;
 
-            int totalSearchesByDate = queryConfiguration.MaxPublicationCount / datesRange.Count;
-            queryConfiguration.MaxPublicationCount = totalSearchesByDate+100;
+            queryConfiguration.MaxPublicationCount = totalSearchesByDate+1000;
             foreach (var key in queryConfiguration.Keywords)
             {
-                for (int i = 0; i < datesRange.Count; i++)
+                for (int i = 0; i < dates.Count; i++)
                 {
-                    myQuery.SinceDate = datesRange[i];
-                    myQuery.UntilDate = datesRange[i];
+                    myQuery.SinceDate = dates[i];
+                    myQuery.UntilDate = dates[i].AddDays(1);
                     ISearchTweetsParameters parameters = ParseSearchTweetsParameters(myQuery, key);
                     IList<ITweet> tweets = Search.SearchTweets(parameters).ToList();
                     ParseTweets(tweets, publications, queryConfiguration);
