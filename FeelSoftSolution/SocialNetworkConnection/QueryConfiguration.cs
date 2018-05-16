@@ -48,7 +48,7 @@ namespace SocialNetworkConnection
 
         private void ParseFromQueryFormat(string queryFormat)
         {
-            string[] info = queryFormat.Split(new string[] { Environment.NewLine },
+             string[] info = queryFormat.Split(new string[] { "\n" },
                StringSplitOptions.None);
             Name = info[0];
             ParseKeywords(info[1]);
@@ -56,13 +56,25 @@ namespace SocialNetworkConnection
             Language = ParseLanguage(info[3]);
             SearchType = ParseSearchType(info[4]);
             Filter = ParseFilter(info[5]);
-            SinceDate = DateTime.Parse(info[6]);
-            UntilDate = DateTime.Parse(info[7]);
+            SinceDate = ParseExactDate(info[6]);
+            UntilDate = ParseExactDate(info[7]);
             MaxPublicationCount = int.Parse(info[8]);
             MaxResponsesCount = int.Parse(info[9]);
             Geo = info[10];
         }
 
+        private DateTime ParseExactDate(string dateString)
+        {
+            return ParseExactDate(dateString,'/');
+        }
+        private DateTime ParseExactDate(string dateString,char split)
+        {
+            string[] infoDate = dateString.Split(split);
+            int month = int.Parse(infoDate[0]);
+            int day = int.Parse(infoDate[1]);
+            int year = int.Parse(infoDate[2]);
+            return new DateTime(year,month,day);
+        }
         private static Filters ParseFilter(string format)
         {
             Filters fil = Filters.Hashtag;
