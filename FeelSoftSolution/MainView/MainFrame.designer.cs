@@ -295,6 +295,7 @@ namespace MainView
         private System.Windows.Forms.Panel containerPanel;
         private Button btnViewPublications;
         private Panel panel6;
+        
 
         public Controller.Controller Controller { get => controller; set => controller = value; }
     }

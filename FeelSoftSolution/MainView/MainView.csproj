@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportPane.Designer.cs">
+      <DependentUpon>ReportPane.cs</DependentUpon>
+    </Compile>
     <Compile Include="Visualization.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,6 +88,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReportPane.resx">
+      <DependentUpon>ReportPane.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Visualization.resx">
       <DependentUpon>Visualization.cs</DependentUpon>
     </EmbeddedResource>

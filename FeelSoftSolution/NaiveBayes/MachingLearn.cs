@@ -52,10 +52,15 @@ namespace NaiveBayes
                     int prop = tmp.Propiedades;
                     double[] average = tmp.Averege;
                     double[] var = tmp.Vari;
+                    double[] plus = tmp.Plus;
                     double sum = tmp.Proba;
                     for (int i = 0; i < prop; i++)
                     {
-                        sum *= Rule(average[i], var[i], input[i]);
+                        if (input[i] != 0)
+                        {
+                            sum *= plus[i] * input[i];
+                        }
+                      //  sum *= Rule(average[i], var[i], input[i]);
                     }
                     ret = sum > pro ? a : ret;
                     pro = sum > pro ? sum : pro;

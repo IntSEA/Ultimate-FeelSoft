@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewQualifier", "ViewQualifier\ViewQualifier.csproj", "{9A4222FA-4349-44CD-AAE0-0E3BAA68FAE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{BC1A1646-FFDD-434D-A69D-7B9CEE5BF655}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{9A4222FA-4349-44CD-AAE0-0E3BAA68FAE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A4222FA-4349-44CD-AAE0-0E3BAA68FAE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A4222FA-4349-44CD-AAE0-0E3BAA68FAE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC1A1646-FFDD-434D-A69D-7B9CEE5BF655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC1A1646-FFDD-434D-A69D-7B9CEE5BF655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC1A1646-FFDD-434D-A69D-7B9CEE5BF655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC1A1646-FFDD-434D-A69D-7B9CEE5BF655}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

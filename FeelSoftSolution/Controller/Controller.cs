@@ -17,7 +17,7 @@ namespace Controller
         private string path = "..//..//..//LemmatizedPublications";
         private IProcessor processor;
         private ISearchDataSet dataSet;
-        private IAnalityc naiveBayes;
+        private NaiveAnalytic naiveBayes;
         private DictionaryAn dictionaryAn;
 
         private Dictionary<string, Candidate> candidates;
@@ -35,7 +35,19 @@ namespace Controller
             LoadPublications();
         }
 
-      
+        public IDictionary<int, double> DataWords(out int allWords)
+        {
+            IDictionary<string, int> words = naiveBayes.GetWordbank();
+            IDictionary<int, double> reto = new Dictionary<int, double>();
+            allWords = words.Count;
+            var group = words.Values.GroupBy(x=>x);
+            foreach (var item in group)
+            {
+                reto.Add(item.Key, (1.0 * item.Count()) / allWords);
+            }
+
+            return reto;
+        }
 
         public void LoadPublications()
         {
@@ -57,7 +69,29 @@ namespace Controller
             }
         }
 
-        
+        public string FailTrainig()
+        {
+            return (100 * naiveBayes.FailTrainig).ToString("#.##") + "%";
+        }
+
+        public string FailDecided()
+        {
+            return (100 * naiveBayes.FailDecided).ToString("#.##") + "%";
+        }
+
+        public IDictionary<int, double> DataPublications(out int allS)
+        {
+            int[] outPut = naiveBayes.DataTestOutputTrainig;
+            allS = outPut.Length;
+            var group = outPut.GroupBy(x=>x);
+            IDictionary<int, double> retorno = new Dictionary<int, double>();
+            foreach (var item in group)
+            {
+                retorno.Add(item.Key, (1.0*item.Count()/allS));
+            }
+            return retorno;
+        }
+
         public void AutomaticSearch()
         {
 
@@ -157,11 +191,11 @@ namespace Controller
                     {
                         int qualification = naiveBayes.Decided(words);
 
-                        if (qualification > 5)
+                        if (qualification ==1)
                         {
                             countPositive++;
                         }
-                        else if (qualification < -5)
+                        else if (qualification == -1)
                         {
                             countNegative++;
                         }

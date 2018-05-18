@@ -140,7 +140,7 @@ namespace WebScrapper
         {
             if (currentConfiguration != null)
             {
-
+                
                 queryForm = new QueryConfigurationForm();
                 queryForm.SetQueryConfiguration(currentConfiguration);
                 DialogResult result = queryForm.ShowDialog();
@@ -163,7 +163,6 @@ namespace WebScrapper
 
                     cbxQueries.Items.Clear();
                     cbxQueries.Items.AddRange(configurations.ToArray());
-
                 }
 
             }

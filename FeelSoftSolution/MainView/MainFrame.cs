@@ -47,9 +47,10 @@ namespace MainView
         private void BtnReports_Click(object sender, EventArgs e)
         {
             containerPanel.Controls.Clear();
-            //containerPanel.Controls.Add(report);
-           // containerPanel.Tag = report;
-            //report.Show();
+            ReportPane report = new ReportPane(controller);
+            containerPanel.Controls.Add(report);
+            containerPanel.Tag = report;
+            report.Show();
 
         }
 
