@@ -65,18 +65,18 @@ namespace FacebookConnection
 
                 DateTime initDate = myQuery.SinceDate;
                 TimeSpan rangeDates = myQuery.UntilDate.Subtract(queryConfiguration.SinceDate);
-                int totalDays = (int) (rangeDates.TotalDays == 0 ? 1 : (rangeDates.TotalDays)+1);
+                int totalDays = (int)(rangeDates.TotalDays == 0 ? 1 : (rangeDates.TotalDays) + 1);
                 if (totalDays <= 0)
                 {
                     throw new ArgumentOutOfRangeException("since date can't be longer than until date");
                 }
-                
-               
+
+
                 IList<DateTime> datesRange = Enumerable.Range(0, totalDays)
                     .Select(x => initDate.AddDays(x)).ToList();
 
                 int totalPublications = myQuery.MaxPublicationCount;
-                
+
 
                 if (totalPublications > 100)
                 {
@@ -95,19 +95,19 @@ namespace FacebookConnection
                 {
                     //for (int i = 0; i < datesRange.Count; i++)
                     //{
-                        //myQuery.SinceDate = datesRange[i];
-                        //myQuery.UntilDate = datesRange[i].AddDays(1);
+                    //myQuery.SinceDate = datesRange[i];
+                    //myQuery.UntilDate = datesRange[i].AddDays(1);
 
-                            //new DateTime(datesRange[i].Year, datesRange[i].Month, 
-                            //DateTime.DaysInMonth(datesRange[i].Year, datesRange[i].Month)); REALIZE QUERY FOR MONTH
-                        //SetDatesRangeInFields(fields, myQuery);
-                       
-                        IList<IPublication> partialPublication = RequestFeedToGraph(page, fields, totalPublications, myQuery);
-                        ((List<IPublication>)publications).AddRange(partialPublication);
-                        if (publications.Count > (totalPublications * 2))
-                        {
-                            break;
-                        }
+                    //new DateTime(datesRange[i].Year, datesRange[i].Month, 
+                    //DateTime.DaysInMonth(datesRange[i].Year, datesRange[i].Month)); REALIZE QUERY FOR MONTH
+                    //SetDatesRangeInFields(fields, myQuery);
+
+                    IList<IPublication> partialPublication = RequestFeedToGraph(page, fields, totalPublications, myQuery);
+                    ((List<IPublication>)publications).AddRange(partialPublication);
+                    if (publications.Count > (totalPublications * 2))
+                    {
+                        break;
+                    }
                     //}
                 }
                 publications = FilterPublications(publications, myQuery.Keywords);
@@ -127,7 +127,7 @@ namespace FacebookConnection
             string untilRequest = until.ToShortDateString().Replace("/", "-");
             string sinceRequest = since.ToShortDateString().Replace("/", "-");
             args["since"] = sinceRequest;
-            args["until"]= untilRequest;
+            args["until"] = untilRequest;
         }
 
         private IList<IPublication> FilterPublications(IList<IPublication> publications, IList<string> keywords)
@@ -250,9 +250,9 @@ namespace FacebookConnection
             args.Add("limit", max);
             string fieldsRequest = GetFieldsRequest(queryConfiguration);
             args.Add("fields", fieldsRequest);
-            SetDatesRangeInFields(args,queryConfiguration);
+            //SetDatesRangeInFields(args,queryConfiguration);
 
-           
+
         }
 
         private string GetFieldsRequest(IQueryConfiguration queryConfiguration)
@@ -300,21 +300,21 @@ namespace FacebookConnection
                     bool makeRequest = true;
                     while (makeRequest)
                     {
-                       var response =  responsesPages.Last();
+                        var response = responsesPages.Last();
                         bool isEmpty = IsEmptyData(response.data);
-                       if( !isEmpty )
+                        if (!isEmpty)
                         {
-                            AddPublications(response,publications,queryConfiguration);
-                            if (publications.Count > totalPublications * 2)
+                           bool res= AddPublications(response, publications, queryConfiguration);
+                            if (publications.Count > totalPublications * 2 || !res)
                             {
                                 makeRequest = false;
                             }
                             else
                             {
                                 var next = GetNextPublicationsRequest(response);
-                                if (next!=null)
+                                if (next != null)
                                 {
-                                    
+
                                     responsesPages.Add(next);
 
                                 }
@@ -329,7 +329,7 @@ namespace FacebookConnection
                             makeRequest = false;
                         }
                     }
-                  
+
 
                 }
 
@@ -341,9 +341,9 @@ namespace FacebookConnection
         private bool IsEmptyData(dynamic data)
         {
             int count = 0;
-            foreach(var item in data)
+            foreach (var item in data)
             {
-                
+
                 count++;
                 if (count > 0)
                 {
@@ -394,7 +394,14 @@ namespace FacebookConnection
                     {
                         string next = (string)jsonResponse.paging.next;
                         next = DecodeHtmlText(next);
-                        response = MakeRequestToGraphAsync(next).Result;
+                        try
+                        {
+                            response = MakeRequestToGraphAsync(next).Result;
+                        }
+                        catch (Exception)
+                        {
+                            next = null;
+                        }
                     }
                 }
             }
@@ -422,9 +429,9 @@ namespace FacebookConnection
             return response;
         }
 
-        private void AddPublications(dynamic jsonResponse, IList<IPublication> publications, IQueryConfiguration queryConfiguration)
+        private bool AddPublications(dynamic jsonResponse, IList<IPublication> publications, IQueryConfiguration queryConfiguration)
         {
-
+            bool res = true;
             lock (this)
             {
                 if (jsonResponse.data == null)
@@ -440,9 +447,13 @@ namespace FacebookConnection
                         IList<IPublication> responses = GetResponesPublications(item, queryConfiguration);
 
 
-                        if (publication!=null && Classify(publication, queryConfiguration))
+                        if (publication != null && Classify(publication, queryConfiguration))
                         {
                             publications.Add(publication);
+                            if (publication.CreateDate.CompareTo(queryConfiguration.SinceDate) < 0)
+                            {
+                                res = false;
+                            }
                         }
 
                         if (responses != null)
@@ -469,6 +480,8 @@ namespace FacebookConnection
                     }
                 }
             }
+
+            return res;
         }
 
         private IPublication ParsePublicationOfJsonResponse(dynamic item, IQueryConfiguration queryConfiguration)
