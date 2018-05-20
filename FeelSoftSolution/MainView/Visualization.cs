@@ -282,7 +282,7 @@ namespace MainView
             for (int i = 0; i < hashCandidate.Count; i++)
 
             {           
-                chart2.Series[checkbox + value + network].Points.AddXY(time[i], hashCandidate[time[i]][2] * 100);
+                chart2.Series[checkbox + value + network].Points.AddXY(time[i], hashCandidate[time[i]][2]);
             }
         }
 

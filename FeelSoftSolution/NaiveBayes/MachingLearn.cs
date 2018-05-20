@@ -16,17 +16,7 @@ namespace NaiveBayes
         {
             categories = new Dictionary<int, Category>();   
         }
-        public double Rule(double aver,double var,int par)
-        {
-            if (var==0)
-            {
-                return 0;
-            }
-            double arg = -1*(Math.Pow(par - aver,2))/(2*var);
-            double div = Math.Sqrt(2 * Math.PI*var);
-            double exp = Math.Exp(arg)/div;
-            return exp;
-        }
+        
         public bool Decide(int[][] input, out int[] ret)
         {
             bool res = true;
@@ -50,8 +40,6 @@ namespace NaiveBayes
                 foreach (int a in keys){
                     categories.TryGetValue(a, out Category tmp);
                     int prop = tmp.Propiedades;
-                    double[] average = tmp.Averege;
-                    double[] var = tmp.Vari;
                     double[] plus = tmp.Plus;
                     double sum = tmp.Proba;
                     for (int i = 0; i < prop; i++)
@@ -60,12 +48,11 @@ namespace NaiveBayes
                         {
                             sum *= plus[i] * input[i];
                         }
-                      //  sum *= Rule(average[i], var[i], input[i]);
+                      
                     }
                     ret = sum > pro ? a : ret;
                     pro = sum > pro ? sum : pro;
-                    //Console.Write("" + sum + " " + pro);
-                    //Console.WriteLine();
+                    
 
                 }
             }
@@ -113,3 +100,4 @@ namespace NaiveBayes
         }
     }
 }
+ 

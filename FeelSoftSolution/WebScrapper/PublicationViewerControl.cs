@@ -25,15 +25,15 @@ namespace WebScrapper
         {
             if (publications == null)
             {
-                MessageBox.Show("Not found publications");
+                MessageBox.Show("No se encontraron publicaciones");
             }
             else if (publications.Count == 0)
             {
-                MessageBox.Show("NOt found publications");
+                MessageBox.Show("No se encontraron publicaciones.");
             }
             else if (publications.Count > 0)
             {
-                MessageBox.Show("Found publications");
+                MessageBox.Show("Publicaciones encontradas");
                 this.publications = publications.ToArray();
                 SetDefaultViewConfigToPublications();
             }

@@ -102,8 +102,8 @@ namespace SocialNetworkConnection
             string baseName = null ;
             if (publications.Values.Count > 0)
             {
-                string initDate = publications.Values.Max(x => x.CreateDate).ToShortDateString().Replace("/","-").Trim();
-                string lastDate = publications.Values.Min(x=> x.CreateDate).ToShortDateString().Replace("/", "-").Trim();
+                string initDate = publications.Values.Min(x => x.CreateDate).ToShortDateString().Replace("/","-").Trim();
+                string lastDate = publications.Values.Max(x=> x.CreateDate).ToShortDateString().Replace("/", "-").Trim();
                 baseName = initDate + "_" + lastDate;
             }
             if (String.IsNullOrEmpty(baseName))

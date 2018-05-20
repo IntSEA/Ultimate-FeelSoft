@@ -35,6 +35,13 @@ namespace Controller
             LoadPublications();
         }
 
+        public void Update()
+        {
+            dataSet = new SearchDataSet();
+            candidates = new Dictionary<string, Candidate>();
+            LoadPublications();
+        }
+
         public IDictionary<int, double> DataWords(out int allWords)
         {
             IDictionary<string, int> words = naiveBayes.GetWordbank();

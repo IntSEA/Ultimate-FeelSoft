@@ -321,20 +321,9 @@ namespace WebScrapper
                 dataset.AddOrReplacePublications(publications);
 
             }
-            
-            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
-            DialogResult resultFolderDialog = folderDialog.ShowDialog();
-            
-            if (resultFolderDialog == DialogResult.OK)
-            {
-                string folderName = folderDialog.SelectedPath;
-
-
-                //string folderName = "..//..//..//Database//LemmatizedPublications";
+                string folderName = "..//..//..//LemmatizedPublications";
                 dataset.BasePath = folderName + "/";
-                dataset.ExportDataSet();
-            }
-            
+                
             InvokeHandlers invokeHandlers = new InvokeHandlers(InvokeScrapperHandlers);
             this.Invoke(invokeHandlers);
             

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Analytics;
 using System.IO;
 
@@ -27,7 +26,7 @@ namespace NaiveBayes
         public NaiveAnalytic()
         {
             machingLearn = new MachingLearn();
-            porcentTrining = 0.9;
+            porcentTrining = 0.8;
 
             LoadDataTraining("..//..//..//Analytic/DataTrainingText.txt", Analytic.TYPE_STRING);
 
@@ -198,17 +197,11 @@ namespace NaiveBayes
             }
             return ret;
         }
-
-
-        
+                 
         public override int Decided(int[] input)
         {
             machingLearn.Decide(input, out int ret);
             return ret;
-        }
-
-       
-
-        
-    }
+        }  
+     }
 }

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.words = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.sentences = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,32 +46,32 @@
             // 
             // words
             // 
-            chartArea3.Name = "ChartArea1";
-            this.words.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.words.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.words.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.words.Legends.Add(legend1);
             this.words.Location = new System.Drawing.Point(21, 14);
             this.words.Name = "words";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.words.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.words.Series.Add(series1);
             this.words.Size = new System.Drawing.Size(642, 303);
             this.words.TabIndex = 0;
             this.words.Text = "chart1";
             // 
             // sentences
             // 
-            chartArea4.Name = "ChartArea1";
-            this.sentences.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.sentences.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.sentences.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.sentences.Legends.Add(legend2);
             this.sentences.Location = new System.Drawing.Point(21, 323);
             this.sentences.Name = "sentences";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.sentences.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.sentences.Series.Add(series2);
             this.sentences.Size = new System.Drawing.Size(642, 300);
             this.sentences.TabIndex = 1;
             this.sentences.Text = "chart2";
@@ -102,6 +102,7 @@
             // 
             this.failTraining.AutoSize = true;
             this.failTraining.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.failTraining.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.failTraining.Location = new System.Drawing.Point(894, 50);
             this.failTraining.Name = "failTraining";
             this.failTraining.Size = new System.Drawing.Size(51, 20);
@@ -112,6 +113,7 @@
             // 
             this.failDecided.AutoSize = true;
             this.failDecided.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.failDecided.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.failDecided.Location = new System.Drawing.Point(894, 109);
             this.failDecided.Name = "failDecided";
             this.failDecided.Size = new System.Drawing.Size(51, 20);

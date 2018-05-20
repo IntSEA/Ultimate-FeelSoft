@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebScrapper", "WebScrapper\WebScrapper.csproj", "{1EF59294-5A62-4032-9A14-EEDA713A372C}"
 EndProject
@@ -22,8 +22,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainView", "MainView\MainView.csproj", "{6D4F9E52-459B-4710-8F58-1F892AB3E61E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NaiveBayes", "NaiveBayes\NaiveBayes.csproj", "{696CFAD4-D3C5-460B-BA14-C27EA3E69B56}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qualification", "Qualification\Qualification.csproj", "{4E9C2C13-6789-497D-AEBD-A23BF76BA4F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qualifier", "Qualifier\Qualifier.csproj", "{9F10BB0D-F2F5-492A-BD9B-7A533B4C3871}"
 EndProject
@@ -81,10 +79,6 @@ Global
 		{696CFAD4-D3C5-460B-BA14-C27EA3E69B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{696CFAD4-D3C5-460B-BA14-C27EA3E69B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{696CFAD4-D3C5-460B-BA14-C27EA3E69B56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E9C2C13-6789-497D-AEBD-A23BF76BA4F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E9C2C13-6789-497D-AEBD-A23BF76BA4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E9C2C13-6789-497D-AEBD-A23BF76BA4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E9C2C13-6789-497D-AEBD-A23BF76BA4F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9F10BB0D-F2F5-492A-BD9B-7A533B4C3871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9F10BB0D-F2F5-492A-BD9B-7A533B4C3871}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F10BB0D-F2F5-492A-BD9B-7A533B4C3871}.Release|Any CPU.ActiveCfg = Release|Any CPU
