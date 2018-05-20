@@ -104,7 +104,7 @@ namespace SocialNetworkConnection
             {
                 string initDate = publications.Values.Min(x => x.CreateDate).ToShortDateString().Replace("/","-").Trim();
                 string lastDate = publications.Values.Max(x=> x.CreateDate).ToShortDateString().Replace("/", "-").Trim();
-                baseName = initDate + "_" + lastDate;
+                baseName = initDate + "_" + lastDate + publications.Values.ToArray()[0].ConfigurationName;
             }
             if (String.IsNullOrEmpty(baseName))
             {

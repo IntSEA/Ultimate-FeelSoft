@@ -46,6 +46,7 @@
             // 
             // words
             // 
+            chartArea1.AxisY.LabelStyle.Format = "{0.}%";
             chartArea1.Name = "ChartArea1";
             this.words.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
@@ -62,6 +63,7 @@
             // 
             // sentences
             // 
+            chartArea2.AxisY.LabelStyle.Format = "{0.}%";
             chartArea2.Name = "ChartArea1";
             this.sentences.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
@@ -92,7 +94,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label2.Location = new System.Drawing.Point(669, 109);
+            this.label2.Location = new System.Drawing.Point(669, 147);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 20);
             this.label2.TabIndex = 3;
@@ -103,7 +105,7 @@
             this.failTraining.AutoSize = true;
             this.failTraining.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.failTraining.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.failTraining.Location = new System.Drawing.Point(894, 50);
+            this.failTraining.Location = new System.Drawing.Point(669, 72);
             this.failTraining.Name = "failTraining";
             this.failTraining.Size = new System.Drawing.Size(51, 20);
             this.failTraining.TabIndex = 4;
@@ -114,7 +116,7 @@
             this.failDecided.AutoSize = true;
             this.failDecided.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.failDecided.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.failDecided.Location = new System.Drawing.Point(894, 109);
+            this.failDecided.Location = new System.Drawing.Point(669, 182);
             this.failDecided.Name = "failDecided";
             this.failDecided.Size = new System.Drawing.Size(51, 20);
             this.failDecided.TabIndex = 5;

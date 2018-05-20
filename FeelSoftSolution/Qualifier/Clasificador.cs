@@ -46,8 +46,14 @@ namespace Qualifier
                 if (sLine != null)
                 {
                     String[] pair = sLine.Split('|');
+                    String f = pair[0];
+                    if (f.CompareTo("ID") == 0)
+                    {
+                        sLine = objReader.ReadLine();
+                        pair = sLine.Split('|');
+                    }
                     RawText.Add(pair[3]);
-                    ProcessedText.Add(pair[8]);
+                    ProcessedText.Add(pair[7]);
                 }
 
             }
