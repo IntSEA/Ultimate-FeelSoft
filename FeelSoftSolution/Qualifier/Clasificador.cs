@@ -46,8 +46,8 @@ namespace Qualifier
                 if (sLine != null)
                 {
                     String[] pair = sLine.Split('|');
-                    RawText.Add(pair[0]);
-                    ProcessedText.Add(pair[1]);
+                    RawText.Add(pair[3]);
+                    ProcessedText.Add(pair[8]);
                 }
 
             }

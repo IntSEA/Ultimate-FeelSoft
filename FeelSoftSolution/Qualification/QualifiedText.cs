@@ -15,7 +15,7 @@ namespace Qualification
         private TheDictionary dictionary;
         private Processor processor;
         private IList<string> unqualifiedWords;
-        private IList<IPublication> qualifiedPublications;
+        //private IList<IPublication> qualifiedPublications;
 
         public QualifiedText()
         {

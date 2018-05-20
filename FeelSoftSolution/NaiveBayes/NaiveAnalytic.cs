@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Analytics;
 using System.IO;
 
@@ -198,17 +197,11 @@ namespace NaiveBayes
             }
             return ret;
         }
-
-
-        
+                 
         public override int Decided(int[] input)
         {
             machingLearn.Decide(input, out int ret);
             return ret;
-        }
-
-       
-
-        
-    }
+        }  
+     }
 }

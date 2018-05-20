@@ -33,7 +33,7 @@ namespace WebScrapper
             else
             {
                 AddKeywordToCBX(keyword);
-               
+
 
             }
 
@@ -59,7 +59,7 @@ namespace WebScrapper
             SetUntilDate(queryConfiguration.UntilDate);
             SetTotalPublicationsToSearch(queryConfiguration.MaxPublicationCount);
             SetTotalResponsesInPublication(queryConfiguration.MaxResponsesCount);
-      
+
         }
 
         private void SetName(string name)
@@ -103,7 +103,7 @@ namespace WebScrapper
                     }
                 case Filters.Image:
                     {
-                        rdbImage.Checked=true;
+                        rdbImage.Checked = true;
                         break;
                     }
                 case Filters.News:
@@ -186,11 +186,10 @@ namespace WebScrapper
         internal IQueryConfiguration GetQueryConfiguration()
         {
 
-            if (queryConfiguration == null)
-            {
-                return CreateQueryConfiguration();
-            }
-            return queryConfiguration;
+
+            return CreateQueryConfiguration();
+
+
         }
 
         private IQueryConfiguration CreateQueryConfiguration()
@@ -224,8 +223,8 @@ namespace WebScrapper
         private void AddTotalSearches(IQueryConfiguration queryConfiguration)
         {
             decimal value = nudTotalPublications.Value;
-            if(value<=int.MaxValue)
-            { 
+            if (value <= int.MaxValue)
+            {
                 queryConfiguration.MaxPublicationCount = (int)value;
             }
             else
@@ -294,7 +293,7 @@ namespace WebScrapper
             queryConfiguration.UntilDate = dtpUntilDate.Value;
         }
 
-       
+
         private void AddLocation(IQueryConfiguration queryConfiguration)
         {
             if (rdbColombia.Checked)
@@ -345,7 +344,7 @@ namespace WebScrapper
             cbxKeywords.SelectedItem = cbxKeywords.Items.Count > 0 ? cbxKeywords.Items[0] : "";
         }
 
-      
+
 
         private void BtnExportQueryConfiguration_Click(object sender, EventArgs e)
         {
@@ -358,7 +357,7 @@ namespace WebScrapper
             Thread thread = new Thread(OpenDialogInThread());
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
-            
+
         }
 
         private ThreadStart OpenDialogInThread()
@@ -378,13 +377,13 @@ namespace WebScrapper
                 AddKeywordToCBXDelegate delegateMethod = new AddKeywordToCBXDelegate(AddKeywordToCBX);
                 while ((keyword = sr.ReadLine()) != null)
                 {
-                    this.Invoke(delegateMethod,keyword);
+                    this.Invoke(delegateMethod, keyword);
                 }
 
                 sr.Close();
             }
         }
 
-       
+
     }
 }

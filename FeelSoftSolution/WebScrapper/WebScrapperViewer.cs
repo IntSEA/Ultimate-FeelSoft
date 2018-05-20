@@ -322,6 +322,7 @@ namespace WebScrapper
 
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
             DialogResult resultFolderDialog = folderDialog.ShowDialog();
@@ -342,10 +343,11 @@ namespace WebScrapper
 =======
                 //string folderName = "..//..//..//Database//LemmatizedPublications";
 >>>>>>> 32eccb2281c83f2cb839c77b40a4e7bdfd98118a
+=======
+                string folderName = "..//..//..//LemmatizedPublications";
+>>>>>>> e61820c6ed5831a57b43b4fad0f7a461bdde5bfe
                 dataset.BasePath = folderName + "/";
-                dataset.ExportDataSet();
-            }
-            
+                
             InvokeHandlers invokeHandlers = new InvokeHandlers(InvokeScrapperHandlers);
             this.Invoke(invokeHandlers);
 <<<<<<< HEAD

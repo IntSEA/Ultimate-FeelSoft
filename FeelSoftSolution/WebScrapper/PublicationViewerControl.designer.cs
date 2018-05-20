@@ -40,8 +40,6 @@ namespace WebScrapper
             this.btnBefore = new System.Windows.Forms.Button();
             this.tbxPublication = new System.Windows.Forms.TextBox();
             this.gbxFunctions = new System.Windows.Forms.GroupBox();
-            this.btnViewGraph = new System.Windows.Forms.Button();
-            this.btnAddToGraph = new System.Windows.Forms.Button();
             this.btnImportPublications = new System.Windows.Forms.Button();
             this.btnExportPublications = new System.Windows.Forms.Button();
             this.btnSavePublications = new System.Windows.Forms.Button();
@@ -143,8 +141,6 @@ namespace WebScrapper
             // 
             // gbxFunctions
             // 
-            this.gbxFunctions.Controls.Add(this.btnViewGraph);
-            this.gbxFunctions.Controls.Add(this.btnAddToGraph);
             this.gbxFunctions.Controls.Add(this.btnImportPublications);
             this.gbxFunctions.Controls.Add(this.btnExportPublications);
             this.gbxFunctions.Controls.Add(this.btnSavePublications);
@@ -155,29 +151,9 @@ namespace WebScrapper
             this.gbxFunctions.TabStop = false;
             this.gbxFunctions.Text = "Funciones";
             // 
-            // btnViewGraph
-            // 
-            this.btnViewGraph.Location = new System.Drawing.Point(131, 77);
-            this.btnViewGraph.Name = "btnViewGraph";
-            this.btnViewGraph.Size = new System.Drawing.Size(135, 23);
-            this.btnViewGraph.TabIndex = 4;
-            this.btnViewGraph.Text = "Ver grafica";
-            this.btnViewGraph.UseVisualStyleBackColor = true;
-            this.btnViewGraph.Click += new System.EventHandler(this.BtnViewGraph_Click);
-            // 
-            // btnAddToGraph
-            // 
-            this.btnAddToGraph.Location = new System.Drawing.Point(207, 19);
-            this.btnAddToGraph.Name = "btnAddToGraph";
-            this.btnAddToGraph.Size = new System.Drawing.Size(165, 23);
-            this.btnAddToGraph.TabIndex = 3;
-            this.btnAddToGraph.Text = "Añadir a la grafica";
-            this.btnAddToGraph.UseVisualStyleBackColor = true;
-            this.btnAddToGraph.Click += new System.EventHandler(this.BtnAddToGraph_Click);
-            // 
             // btnImportPublications
             // 
-            this.btnImportPublications.Location = new System.Drawing.Point(27, 48);
+            this.btnImportPublications.Location = new System.Drawing.Point(17, 48);
             this.btnImportPublications.Name = "btnImportPublications";
             this.btnImportPublications.Size = new System.Drawing.Size(165, 23);
             this.btnImportPublications.TabIndex = 2;
@@ -187,7 +163,7 @@ namespace WebScrapper
             // 
             // btnExportPublications
             // 
-            this.btnExportPublications.Location = new System.Drawing.Point(207, 48);
+            this.btnExportPublications.Location = new System.Drawing.Point(201, 48);
             this.btnExportPublications.Name = "btnExportPublications";
             this.btnExportPublications.Size = new System.Drawing.Size(165, 23);
             this.btnExportPublications.TabIndex = 1;
@@ -197,7 +173,7 @@ namespace WebScrapper
             // 
             // btnSavePublications
             // 
-            this.btnSavePublications.Location = new System.Drawing.Point(27, 19);
+            this.btnSavePublications.Location = new System.Drawing.Point(117, 19);
             this.btnSavePublications.Name = "btnSavePublications";
             this.btnSavePublications.Size = new System.Drawing.Size(165, 23);
             this.btnSavePublications.TabIndex = 0;
@@ -238,8 +214,6 @@ namespace WebScrapper
         private System.Windows.Forms.Button btnExportPublications;
         private WebScrapperViewer main;
         private System.Windows.Forms.Button btnViewFullText;
-        private System.Windows.Forms.Button btnViewGraph;
-        private System.Windows.Forms.Button btnAddToGraph;
 
         private List<IPublication> publications1;
         private List<IPublication> publications2;

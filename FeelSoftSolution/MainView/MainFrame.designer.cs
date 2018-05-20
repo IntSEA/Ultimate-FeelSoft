@@ -37,10 +37,6 @@ namespace MainView
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrame));
             this.verticalMenu = new System.Windows.Forms.Panel();
-            this.btnViewPublications = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btnAdvances = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.btnQualification = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -58,10 +54,6 @@ namespace MainView
             // verticalMenu
             // 
             this.verticalMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.verticalMenu.Controls.Add(this.btnViewPublications);
-            this.verticalMenu.Controls.Add(this.panel6);
-            this.verticalMenu.Controls.Add(this.btnAdvances);
-            this.verticalMenu.Controls.Add(this.panel5);
             this.verticalMenu.Controls.Add(this.btnQualification);
             this.verticalMenu.Controls.Add(this.pictureBox1);
             this.verticalMenu.Controls.Add(this.panel4);
@@ -77,60 +69,6 @@ namespace MainView
             this.verticalMenu.Size = new System.Drawing.Size(228, 627);
             this.verticalMenu.TabIndex = 2;
             // 
-            // btnViewPublications
-            // 
-            this.btnViewPublications.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.btnViewPublications.FlatAppearance.BorderSize = 0;
-            this.btnViewPublications.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.btnViewPublications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewPublications.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewPublications.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnViewPublications.Image = ((System.Drawing.Image)(resources.GetObject("btnViewPublications.Image")));
-            this.btnViewPublications.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnViewPublications.Location = new System.Drawing.Point(7, 477);
-            this.btnViewPublications.Name = "btnViewPublications";
-            this.btnViewPublications.Size = new System.Drawing.Size(219, 50);
-            this.btnViewPublications.TabIndex = 9;
-            this.btnViewPublications.Text = "Publicaciones";
-            this.btnViewPublications.UseVisualStyleBackColor = false;
-            this.btnViewPublications.Click += new System.EventHandler(this.BtnViewPublications_Click);
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.panel6.ForeColor = System.Drawing.Color.Cornsilk;
-            this.panel6.Location = new System.Drawing.Point(0, 551);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(5, 53);
-            this.panel6.TabIndex = 8;
-            // 
-            // btnAdvances
-            // 
-            this.btnAdvances.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.btnAdvances.FlatAppearance.BorderSize = 0;
-            this.btnAdvances.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.btnAdvances.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdvances.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdvances.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAdvances.Image = ((System.Drawing.Image)(resources.GetObject("btnAdvances.Image")));
-            this.btnAdvances.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdvances.Location = new System.Drawing.Point(6, 554);
-            this.btnAdvances.Name = "btnAdvances";
-            this.btnAdvances.Size = new System.Drawing.Size(219, 50);
-            this.btnAdvances.TabIndex = 8;
-            this.btnAdvances.Text = "Avanzadas";
-            this.btnAdvances.UseVisualStyleBackColor = false;
-            this.btnAdvances.Click += new System.EventHandler(this.BtnAdvances_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.panel5.ForeColor = System.Drawing.Color.Cornsilk;
-            this.panel5.Location = new System.Drawing.Point(0, 477);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(5, 53);
-            this.panel5.TabIndex = 7;
-            // 
             // btnQualification
             // 
             this.btnQualification.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
@@ -141,7 +79,7 @@ namespace MainView
             this.btnQualification.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnQualification.Image = ((System.Drawing.Image)(resources.GetObject("btnQualification.Image")));
             this.btnQualification.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQualification.Location = new System.Drawing.Point(6, 406);
+            this.btnQualification.Location = new System.Drawing.Point(6, 503);
             this.btnQualification.Name = "btnQualification";
             this.btnQualification.Size = new System.Drawing.Size(219, 50);
             this.btnQualification.TabIndex = 5;
@@ -162,7 +100,7 @@ namespace MainView
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
             this.panel4.ForeColor = System.Drawing.Color.Cornsilk;
-            this.panel4.Location = new System.Drawing.Point(0, 332);
+            this.panel4.Location = new System.Drawing.Point(0, 407);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(5, 53);
             this.panel4.TabIndex = 4;
@@ -171,7 +109,7 @@ namespace MainView
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
             this.panel3.ForeColor = System.Drawing.Color.Cornsilk;
-            this.panel3.Location = new System.Drawing.Point(0, 406);
+            this.panel3.Location = new System.Drawing.Point(0, 503);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(5, 53);
             this.panel3.TabIndex = 3;
@@ -186,7 +124,7 @@ namespace MainView
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(6, 260);
+            this.btnSearch.Location = new System.Drawing.Point(6, 313);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(219, 50);
             this.btnSearch.TabIndex = 3;
@@ -198,7 +136,7 @@ namespace MainView
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
             this.panel2.ForeColor = System.Drawing.Color.Cornsilk;
-            this.panel2.Location = new System.Drawing.Point(0, 260);
+            this.panel2.Location = new System.Drawing.Point(0, 313);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(5, 53);
             this.panel2.TabIndex = 2;
@@ -213,7 +151,7 @@ namespace MainView
             this.btnReports.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnReports.Image = ((System.Drawing.Image)(resources.GetObject("btnReports.Image")));
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(7, 332);
+            this.btnReports.Location = new System.Drawing.Point(6, 407);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(218, 53);
             this.btnReports.TabIndex = 2;
@@ -225,7 +163,7 @@ namespace MainView
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
             this.panel1.ForeColor = System.Drawing.Color.Cornsilk;
-            this.panel1.Location = new System.Drawing.Point(0, 188);
+            this.panel1.Location = new System.Drawing.Point(0, 219);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(5, 53);
             this.panel1.TabIndex = 1;
@@ -240,7 +178,7 @@ namespace MainView
             this.btnHome.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnHome.Image = global::MainView.Properties.Resources.House;
             this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(6, 188);
+            this.btnHome.Location = new System.Drawing.Point(6, 219);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(219, 50);
             this.btnHome.TabIndex = 0;
@@ -254,7 +192,7 @@ namespace MainView
             this.containerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.containerPanel.Location = new System.Drawing.Point(228, 0);
             this.containerPanel.Name = "containerPanel";
-            this.containerPanel.Size = new System.Drawing.Size(797, 627);
+            this.containerPanel.Size = new System.Drawing.Size(855, 627);
             this.containerPanel.TabIndex = 3;
             // 
             // MainFrame
@@ -262,7 +200,7 @@ namespace MainView
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1025, 627);
+            this.ClientSize = new System.Drawing.Size(1083, 627);
             this.Controls.Add(this.containerPanel);
             this.Controls.Add(this.verticalMenu);
             this.Name = "MainFrame";
@@ -289,12 +227,8 @@ namespace MainView
         private Calificador viewQualifier;
         private HomePanel home;
         private Visualization visualization;
-      //  private DateWindow dateWindow;
-        private System.Windows.Forms.Button btnAdvances;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel containerPanel;
-        private Button btnViewPublications;
-        private Panel panel6;
+        
 
         public Controller.Controller Controller { get => controller; set => controller = value; }
     }

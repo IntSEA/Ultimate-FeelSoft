@@ -29,9 +29,10 @@ namespace MainView
 
         private void ShowFormHome()
         {
-            Controller = new Controller.Controller();
+            Controller.Update();
             containerPanel.Tag = home;
             home.Show();
+            this.WindowState = FormWindowState.Normal;
         }
 
         public void ShowFormVisualization()
@@ -47,16 +48,20 @@ namespace MainView
         private void BtnReports_Click(object sender, EventArgs e)
         {
             containerPanel.Controls.Clear();
-            //containerPanel.Controls.Add(report);
-           // containerPanel.Tag = report;
-            //report.Show();
+            ReportPane report = new ReportPane(controller);
+            containerPanel.Controls.Add(report);
+            containerPanel.Tag = report;
+            report.Show();
 
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            containerPanel.Controls.Clear();
+            InitializeControls();
+            ShowFormHome();
             webScrapperViewer = new WebScrapperViewer();
-           webScrapperViewer.AddHandler(this);
+            webScrapperViewer.AddHandler(this);
             webScrapperViewer.Show();
         }
 
@@ -90,15 +95,7 @@ namespace MainView
 
         }
 
-        private void BtnAdvances_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Muy pronto");
-        }
-
-        private void BtnViewPublications_Click(object sender, EventArgs e)
-        {
-            
-        }
+      
 
         public void ExportEventHandler()
         {

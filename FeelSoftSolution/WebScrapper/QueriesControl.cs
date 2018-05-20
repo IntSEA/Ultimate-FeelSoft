@@ -140,7 +140,7 @@ namespace WebScrapper
         {
             if (currentConfiguration != null)
             {
-
+                
                 queryForm = new QueryConfigurationForm();
                 queryForm.SetQueryConfiguration(currentConfiguration);
                 DialogResult result = queryForm.ShowDialog();
@@ -149,16 +149,8 @@ namespace WebScrapper
                 if (DialogResult.OK == result)
                 {
                     currentConfiguration = queryForm.GetQueryConfiguration();
-                    if (cbxQueries.SelectedItem != null)
-                    {
-                        if (currentConfiguration.Name.Equals(((IQueryConfiguration)cbxQueries.SelectedItem).Name))
-                        {
-                            cbxQueries.Items.RemoveAt(cbxQueries.SelectedIndex);
-                            cbxQueries.Items.Add(currentConfiguration);
-                        }
-                    }
-
-                    int index = configurations.FindLastIndex(x => x != null && x.Name.Equals(currentConfiguration.Name));
+                   
+                    int index = configurations.FindIndex(x => x != null && x.Name.Equals(currentConfiguration.Name, StringComparison.OrdinalIgnoreCase));
                     if (index != -1)
                     {
                         configurations.RemoveAt(index);
@@ -169,6 +161,8 @@ namespace WebScrapper
                         configurations.Add(currentConfiguration);
                     }
 
+                    cbxQueries.Items.Clear();
+                    cbxQueries.Items.AddRange(configurations.ToArray());
                 }
 
             }

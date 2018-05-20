@@ -85,9 +85,8 @@ namespace FacebookConnection
         private string RequestAccessToken(FacebookSearcher searcher)
         {
 
-            string encryptTokenRequest = GetEncryptTokentRequest();
-            string decryptTokenRequest = GetDecryptRequest(encryptTokenRequest);
-            string token = searcher.MakeTokenRequestToGraphAsync(decryptTokenRequest);
+            string tokenRequest = GetTokentRequest();
+            string token = searcher.MakeTokenRequestToGraphAsync(tokenRequest);
             return token;
         }
 
@@ -133,9 +132,16 @@ namespace FacebookConnection
 
         }
 
-        private string GetEncryptTokentRequest()
+        private string GetTokentRequest()
         {
-            string tokenRequest = System.Configuration.ConfigurationManager.AppSettings["encryptRequestToken"];
+            string grant = "grant_type="+System.Configuration.ConfigurationManager.AppSettings["grant_type"];
+            string clientId ="client_id="+ System.Configuration.ConfigurationManager.AppSettings["client_id"];
+            string clientSecret = "client_secret="+ System.Configuration.ConfigurationManager.AppSettings["client_secret"];
+            string fbExchangeToken = "fb_exchange_token="+ System.Configuration.ConfigurationManager.AppSettings["fb_exchange_token"];
+
+            string tokenRequest = "oauth/access_token?" + grant
+                + "&" + clientId + "&" + clientSecret + "&" + fbExchangeToken;
+
 
             return tokenRequest;
 
