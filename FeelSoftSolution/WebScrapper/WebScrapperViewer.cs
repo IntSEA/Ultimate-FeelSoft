@@ -321,21 +321,38 @@ namespace WebScrapper
                 dataset.AddOrReplacePublications(publications);
 
             }
+<<<<<<< HEAD
 
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
             DialogResult resultFolderDialog = folderDialog.ShowDialog();
+=======
+            
+            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+            DialogResult resultFolderDialog = folderDialog.ShowDialog();
+            
+>>>>>>> 32eccb2281c83f2cb839c77b40a4e7bdfd98118a
             if (resultFolderDialog == DialogResult.OK)
             {
                 string folderName = folderDialog.SelectedPath;
 
 
+<<<<<<< HEAD
                 //IQueryConfiguration queryConfiguration = queriesControl.GetCurrentQueryConfiguration();
                 //       string folderName = "..//..//..//Database//LemmatizedPublications";
+=======
+                //string folderName = "..//..//..//Database//LemmatizedPublications";
+>>>>>>> 32eccb2281c83f2cb839c77b40a4e7bdfd98118a
                 dataset.BasePath = folderName + "/";
-
+                dataset.ExportDataSet();
+            }
+            
             InvokeHandlers invokeHandlers = new InvokeHandlers(InvokeScrapperHandlers);
             this.Invoke(invokeHandlers);
+<<<<<<< HEAD
             }
+=======
+            
+>>>>>>> 32eccb2281c83f2cb839c77b40a4e7bdfd98118a
 
         }
 
