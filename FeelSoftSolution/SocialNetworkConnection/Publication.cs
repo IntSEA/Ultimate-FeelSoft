@@ -65,7 +65,7 @@ namespace SocialNetworkConnection
             string splitSeparator = "|";
             string format = Id + splitSeparator;
             format += WroteBy + splitSeparator;
-            format += CreateDate.ToShortDateString() + splitSeparator;
+            format += QueryConfiguration.GetExactDate(createDate) + splitSeparator;
             format += message + splitSeparator;
             format += LanguageToExportFormat() + splitSeparator;
             format += LocationToExportFormat() + splitSeparator;
@@ -104,28 +104,9 @@ namespace SocialNetworkConnection
 
             //DateTime createdDate = DateTime.Parse(info[2]);
 
-            DateTime createdDate;
-            try
-            {
-                createdDate = DateTime.Parse(info[2]);
-            }
-            catch
-            {
-                string[] dates = info[2].Split('/');
-                string cero = "";
-                string cero2 = "";
-                if (Convert.ToInt32(dates[1]) < 10)
-                {
-                    cero = "0";
-                }
-                if (Convert.ToInt32(dates[0]) < 10)
-                {
-                    cero2 = "0";
-                }
-                string nuevo = cero + dates[1] + "/" + cero2 + dates[0] + "/" + dates[2];
-
-                createdDate = DateTime.Parse(nuevo);
-            }
+            DateTime createdDate = QueryConfiguration.ParseExactDate(info[2]);
+           
+             
             string message = info[3];
 
             Languages language = QueryConfiguration.ParseLanguage(info[4]);

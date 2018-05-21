@@ -40,6 +40,7 @@ namespace WebScrapper
             this.btnBefore = new System.Windows.Forms.Button();
             this.tbxPublication = new System.Windows.Forms.TextBox();
             this.gbxFunctions = new System.Windows.Forms.GroupBox();
+            this.btnStreams = new System.Windows.Forms.Button();
             this.btnImportPublications = new System.Windows.Forms.Button();
             this.btnExportPublications = new System.Windows.Forms.Button();
             this.btnSavePublications = new System.Windows.Forms.Button();
@@ -141,6 +142,7 @@ namespace WebScrapper
             // 
             // gbxFunctions
             // 
+            this.gbxFunctions.Controls.Add(this.btnStreams);
             this.gbxFunctions.Controls.Add(this.btnImportPublications);
             this.gbxFunctions.Controls.Add(this.btnExportPublications);
             this.gbxFunctions.Controls.Add(this.btnSavePublications);
@@ -150,6 +152,18 @@ namespace WebScrapper
             this.gbxFunctions.TabIndex = 1;
             this.gbxFunctions.TabStop = false;
             this.gbxFunctions.Text = "Funciones";
+            // 
+            // btnStreams
+            // 
+            this.btnStreams.Enabled = false;
+            this.btnStreams.Location = new System.Drawing.Point(142, 78);
+            this.btnStreams.Name = "btnStreams";
+            this.btnStreams.Size = new System.Drawing.Size(113, 23);
+            this.btnStreams.TabIndex = 3;
+            this.btnStreams.Text = "Iniciar streams";
+            this.btnStreams.UseVisualStyleBackColor = true;
+            this.btnStreams.Visible = false;
+            this.btnStreams.Click += new System.EventHandler(this.ButtonStreams_Click);
             // 
             // btnImportPublications
             // 
@@ -206,7 +220,7 @@ namespace WebScrapper
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnBefore;
         private System.Windows.Forms.TextBox tbxPublication;
-        private IPublication[] publications;
+        private List<IPublication> publications;
         private int indexCurrentPublications;
         private System.Windows.Forms.GroupBox gbxFunctions;
         private System.Windows.Forms.Button btnSavePublications;
@@ -216,6 +230,6 @@ namespace WebScrapper
         private System.Windows.Forms.Button btnViewFullText;
 
         private List<IPublication> publications1;
-        private List<IPublication> publications2;
+        private System.Windows.Forms.Button btnStreams;
     }
 }

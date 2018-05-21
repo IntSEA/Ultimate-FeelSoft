@@ -250,7 +250,7 @@ namespace FacebookConnection
             args.Add("limit", max);
             string fieldsRequest = GetFieldsRequest(queryConfiguration);
             args.Add("fields", fieldsRequest);
-            //SetDatesRangeInFields(args,queryConfiguration);
+            SetDatesRangeInFields(args, queryConfiguration);
 
 
         }
@@ -302,10 +302,11 @@ namespace FacebookConnection
                     {
                         var response = responsesPages.Last();
                         bool isEmpty = IsEmptyData(response.data);
+                        
                         if (!isEmpty)
                         {
                            bool res= AddPublications(response, publications, queryConfiguration);
-                            if (publications.Count > totalPublications * 2 || !res)
+                            if (publications.Count > totalPublications * 2 || !res||responsesPages.Count>2)
                             {
                                 makeRequest = false;
                             }

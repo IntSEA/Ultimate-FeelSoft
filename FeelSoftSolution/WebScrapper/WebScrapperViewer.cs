@@ -50,6 +50,11 @@ namespace WebScrapper
 
         }
 
+        internal List<IQueryConfiguration> GetCurrentsConfigurations()
+        {
+            return queriesControl.GetConfigurations() ;
+        }
+
         private void InitializeTwitter()
         {
             twitter = new TwitterConnection.Twitter();
@@ -321,40 +326,28 @@ namespace WebScrapper
                 dataset.AddOrReplacePublications(publications);
 
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
             DialogResult resultFolderDialog = folderDialog.ShowDialog();
-=======
             
-            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
-            DialogResult resultFolderDialog = folderDialog.ShowDialog();
+           
             
->>>>>>> 32eccb2281c83f2cb839c77b40a4e7bdfd98118a
             if (resultFolderDialog == DialogResult.OK)
             {
                 string folderName = folderDialog.SelectedPath;
+                dataset.BasePath = folderName + "/";
 
-
-<<<<<<< HEAD
                 //IQueryConfiguration queryConfiguration = queriesControl.GetCurrentQueryConfiguration();
                 //       string folderName = "..//..//..//Database//LemmatizedPublications";
-=======
                 //string folderName = "..//..//..//Database//LemmatizedPublications";
->>>>>>> 32eccb2281c83f2cb839c77b40a4e7bdfd98118a
-=======
-                string folderName = "..//..//..//LemmatizedPublications";
->>>>>>> e61820c6ed5831a57b43b4fad0f7a461bdde5bfe
+                folderName = "..//..//..//LemmatizedPublications";
                 dataset.BasePath = folderName + "/";
                 
             InvokeHandlers invokeHandlers = new InvokeHandlers(InvokeScrapperHandlers);
             this.Invoke(invokeHandlers);
-<<<<<<< HEAD
             }
-=======
             
->>>>>>> 32eccb2281c83f2cb839c77b40a4e7bdfd98118a
 
         }
 

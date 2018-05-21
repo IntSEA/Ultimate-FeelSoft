@@ -139,7 +139,7 @@ namespace WebScrapper
         private int selectedSocialNetwork;
         private PublicationViewerControl publicationViewerControl;
         private System.Windows.Forms.RadioButton rdbTwitter;
-        private QueriesControl queriesControl;
+        private  QueriesControl queriesControl;
         private System.Windows.Forms.Label lblSelectSocialNetwork;
         private System.Windows.Forms.RadioButton rdbFacebook;
         private ISearchDataSet dataset;

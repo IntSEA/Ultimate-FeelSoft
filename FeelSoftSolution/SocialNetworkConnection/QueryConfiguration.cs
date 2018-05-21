@@ -63,16 +63,17 @@ namespace SocialNetworkConnection
             Geo = info[10];
         }
 
-        private DateTime ParseExactDate(string dateString)
+        public static DateTime ParseExactDate(string dateString)
         {
             return ParseExactDate(dateString,'/');
         }
-        private DateTime ParseExactDate(string dateString,char split)
+        public static DateTime ParseExactDate(string dateString,char split)
         {
             string[] infoDate = dateString.Split(split);
-            int month = int.Parse(infoDate[0]);
-            int day = int.Parse(infoDate[1]);
+            int day = int.Parse(infoDate[0]);
+            int month = int.Parse(infoDate[1]);
             int year = int.Parse(infoDate[2]);
+            
             return new DateTime(year,month,day);
         }
         private static Filters ParseFilter(string format)
@@ -227,12 +228,18 @@ namespace SocialNetworkConnection
 
         private string UntilDateToExportFormat()
         {
-            return UntilDate.ToShortDateString();
+            return GetExactDate(untilDate);
         }
 
         private string SinceDateToExportFormat()
         {
-            return SinceDate.ToShortDateString();
+            return GetExactDate(SinceDate);
+        }
+
+        public static string GetExactDate(DateTime date)
+        {
+            string dateStr = date.Day+"/"+date.Month+"/" +date.Year;
+            return dateStr;
         }
 
         public static string FilterToExportFormat(Filters fil)

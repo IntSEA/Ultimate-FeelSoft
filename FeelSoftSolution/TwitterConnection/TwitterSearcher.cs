@@ -72,9 +72,8 @@ namespace TwitterConnection
                 }
             }
         }
-
-
-        private IPublication ParseTweetToPublication(ITweet tweet, IQueryConfiguration queryConfiguration)
+        
+        public static IPublication ParseTweetToPublication(ITweet tweet, IQueryConfiguration queryConfiguration)
         {
             string message = "";
             message = tweet.FullText ?? (tweet.Text + tweet.Suffix);
@@ -135,7 +134,7 @@ namespace TwitterConnection
                 for (int i = 0; i < dates.Count; i++)
                 {
                     myQuery.SinceDate = dates[i];
-                    myQuery.UntilDate = dates[i].AddDays(2);
+                    myQuery.UntilDate = dates[i].AddDays(1);
                     ISearchTweetsParameters parameters = ParseSearchTweetsParameters(myQuery, key);
                     IList<ITweet> tweets = Search.SearchTweets(parameters).ToList();
                     ParseTweets(tweets, publications, queryConfiguration);

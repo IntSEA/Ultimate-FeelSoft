@@ -1,6 +1,7 @@
 ﻿using SocialNetworkConnection;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WebScrapper
@@ -11,7 +12,25 @@ namespace WebScrapper
         {
             InitializeComponent();
             InitializeDataContainers();
+            InitializeQueryConfigurations();
 
+        }
+
+        private void InitializeQueryConfigurations()
+        {
+            string fajardoConfig = "..//..//..//SocialNetworkConnection/Resources/SocialNetworks/Fajardo/Configurations/FajardoConfig.qnc";
+            string petroConfig = "..//..//..//SocialNetworkConnection/Resources/SocialNetworks/Petro/Configurations/PetroConfig.qnc";
+            AddConfig(fajardoConfig);
+            AddConfig(petroConfig);
+        }
+
+        private void AddConfig(string path)
+        {
+            StreamReader sr = new StreamReader(path);
+            string queryFormat = sr.ReadToEnd();
+            sr.Close();
+            IQueryConfiguration queryConfig = new QueryConfiguration(queryFormat);
+            AddQueryConfigurations(queryConfig);
         }
 
         public void SetMain(WebScrapperViewer main)
@@ -29,6 +48,11 @@ namespace WebScrapper
         private void BtnInitSearchClick(object sender, EventArgs e)
         {
             MakeQueryRequest();
+        }
+
+        internal List<IQueryConfiguration> GetConfigurations()
+        {
+            return configurations;
         }
 
         private void MakeQueryRequest()
