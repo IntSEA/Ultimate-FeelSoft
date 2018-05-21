@@ -329,16 +329,16 @@ namespace WebScrapper
             }
 
 
-            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
-            DialogResult resultFolderDialog = folderDialog.ShowDialog();
+            //FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+            //DialogResult resultFolderDialog = folderDialog.ShowDialog();
 
 
-
-            if (resultFolderDialog == DialogResult.OK)
-            {
-                string folderName = folderDialog.SelectedPath;
-                dataset.BasePath = folderName + "/";
-                dataset.ExportDataSet(-1);
+            string folderName = "";
+            //if (resultFolderDialog == DialogResult.OK)
+            //{
+            //    string folderName = folderDialog.SelectedPath;
+            //    dataset.BasePath = folderName + "/";
+            //    dataset.ExportDataSet(-1);
                 //IQueryConfiguration queryConfiguration = queriesControl.GetCurrentQueryConfiguration();
                 //       string folderName = "..//..//..//Database//LemmatizedPublications";
                 //string folderName = "..//..//..//Database//LemmatizedPublications";
@@ -347,7 +347,7 @@ namespace WebScrapper
 
                 InvokeHandlers invokeHandlers = new InvokeHandlers(InvokeScrapperHandlers);
                 this.Invoke(invokeHandlers);
-            }
+            //}
 
 
         }
