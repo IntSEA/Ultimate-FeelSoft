@@ -47,6 +47,8 @@ namespace MainView
 
         private void BtnReports_Click(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+
             containerPanel.Controls.Clear();
             ReportPane report = new ReportPane(controller);
             containerPanel.Controls.Add(report);
