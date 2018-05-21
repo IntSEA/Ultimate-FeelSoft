@@ -26,7 +26,7 @@ namespace NaiveBayes
         public NaiveAnalytic()
         {
             machingLearn = new MachingLearn();
-            porcentTrining = 0.8;
+            porcentTrining = 0.85;
 
             LoadDataTraining("..//..//..//Analytic/DataTrainingText.txt", Analytic.TYPE_STRING);
 
@@ -116,7 +116,16 @@ namespace NaiveBayes
             int numberCase = (int)(porcentTrining * outp.Length);
             List<int[]> training = new List<int[]>();
             List<int> trainingOut = new List<int>();
-            for (int i = 0; i < numberCase; i++)
+            int start = numberCase / 2;
+
+            for (int i = 0; i < start; i++)
+            {
+                training.Add(inp[i]);
+                trainingOut.Add(outp[i]);
+            }
+            int end = inp.Length - start;
+
+            for (int i = end; i < inp.Length; i++)
             {
                training.Add(inp[i]);
                 trainingOut.Add(outp[i]);
@@ -125,7 +134,7 @@ namespace NaiveBayes
             dataTestOutputTraining = trainingOut.ToArray();
              training = new List<int[]>();
              trainingOut = new List<int>();
-            for (int i = numberCase; i < outp.Length; i++)
+            for (int i = start; i < end; i++)
             {
                
                     training.Add(inp[i]);

@@ -43,7 +43,7 @@ namespace Controller
         }
 
         public IDictionary<int, double> DataWords(out int allWords)
-        {
+        {            
             IDictionary<string, int> words = naiveBayes.GetWordbank();
             IDictionary<int, double> reto = new Dictionary<int, double>();
             allWords = words.Count;
@@ -76,6 +76,11 @@ namespace Controller
             }
         }
 
+        public void UpdateDictionary()
+        {
+            naiveBayes = new NaiveAnalytic();
+        }
+
         public string FailTrainig()
         {
             return (100 * naiveBayes.FailTrainig).ToString("#.##") + "%";
@@ -86,8 +91,9 @@ namespace Controller
             return (100 * naiveBayes.FailDecided).ToString("#.##") + "%";
         }
 
-        public IDictionary<int, double> DataPublications(out int allS)
+        public IDictionary<int, double> DataPublicationsTraining(out int allS)
         {
+            
             int[] outPut = naiveBayes.DataTestOutputTrainig;
             allS = outPut.Length;
             var group = outPut.GroupBy(x=>x);
@@ -98,6 +104,21 @@ namespace Controller
             }
             return retorno;
         }
+
+        public IDictionary<int, double> DataPublications(out int allS)
+        {
+
+            int[] outPut = naiveBayes.DataTestOutput;
+            allS = outPut.Length;
+            var group = outPut.GroupBy(x => x);
+            IDictionary<int, double> retorno = new Dictionary<int, double>();
+            foreach (var item in group)
+            {
+                retorno.Add(item.Key, (1.0 * item.Count() / allS));
+            }
+            return retorno;
+        }
+
 
         public void AutomaticSearch()
         {

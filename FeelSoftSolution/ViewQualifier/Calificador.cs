@@ -101,7 +101,9 @@ namespace ViewQualifier
             else
             {
                 StreamWriter stream = File.AppendText(textBox1.Text);
-                stream.WriteLine(textCrudo.Text + "|" + textProcesado.Text + "|" + textCalificacion.Text);
+                int.TryParse(textCalificacion.Text,out int cal);
+                cal=cal<0?-1:(cal>0?1:0);
+                stream.WriteLine(textCrudo.Text + "|" + textProcesado.Text + "|" + cal);
                 stream.Close();
 
                 if (valueTrue)

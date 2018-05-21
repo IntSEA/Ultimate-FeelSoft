@@ -109,6 +109,7 @@ namespace SocialNetworkConnection
                     string lastDate = QueryConfiguration.GetExactDate(publications.Values.Max(x => x.CreateDate)).Replace("/", "-");
                     baseName = initDate + "_" + lastDate;
                 }
+
             }
             if (String.IsNullOrEmpty(baseName))
             {
