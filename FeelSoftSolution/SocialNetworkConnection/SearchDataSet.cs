@@ -9,7 +9,7 @@ namespace SocialNetworkConnection
 {
     public class SearchDataSet : ISearchDataSet
     {
-        
+        public static Random rs = new Random();
         private string basePath;
         string baseName;
         int suffixName;
@@ -77,13 +77,14 @@ namespace SocialNetworkConnection
         public void ExportDataSet(int quantity)
         {
             BaseName = GetDefaultBaseName();
+
             if (quantity > 0)
             {
                 int totalThreads = publications.Values.Count / quantity;
                 int init = 0;
                 for (int i = 0; i < totalThreads; i++)
                 {
-                    Thread thread = new Thread(ThreadStartExport(init, quantity, BasePath + baseName + suffixName + ".dst"));
+                    Thread thread = new Thread(ThreadStartExport(init, quantity, BasePath + baseName + (suffixName>0? "(" + suffixName + ")":"") + ".dst"));
                     thread.Start();
                     suffixName++;
                     init += quantity;
@@ -99,16 +100,19 @@ namespace SocialNetworkConnection
 
         private string GetDefaultBaseName()
         {
-            string baseName = null ;
+            string baseName = null;
             if (publications.Values.Count > 0)
             {
-                string initDate = publications.Values.Min(x => x.CreateDate).ToShortDateString().Replace("/","-").Trim();
-                string lastDate = publications.Values.Max(x=> x.CreateDate).ToShortDateString().Replace("/", "-").Trim();
-                baseName = initDate + "_" + lastDate;
+                lock (this)
+                {
+                    string initDate = QueryConfiguration.GetExactDate(publications.Values.Min(x => x.CreateDate)).Replace("/", "-");
+                    string lastDate = QueryConfiguration.GetExactDate(publications.Values.Max(x => x.CreateDate)).Replace("/", "-");
+                    baseName = initDate + "_" + lastDate;
+                }
             }
             if (String.IsNullOrEmpty(baseName))
             {
-                baseName=DateTime.Now.ToShortDateString().Replace("/", "-").Trim();
+                baseName = QueryConfiguration.GetExactDate(DateTime.Now);
                 baseName += ("_" + baseName).Trim();
             }
             return baseName;
@@ -117,6 +121,8 @@ namespace SocialNetworkConnection
 
         public void ExportDataSet()
         {
+            BaseName = GetDefaultBaseName();
+
             Thread thread = new Thread(ThreadStartExport(0, totalPublications, BasePath + baseName + ".dst"));
             thread.Start();
 
@@ -129,8 +135,17 @@ namespace SocialNetworkConnection
 
         private void Export(int init, int quantity, string path)
         {
-            StreamWriter sw = new StreamWriter(path);
-            sw.Write("ID|WroteBy|CreateDate|Message|Language|Language|Location|ConfigurationName|LemmatizedMessage|" + Publication.END_LINE);
+            StreamWriter sw = null;
+            if (new FileInfo(path).Exists)
+            {
+                sw = new StreamWriter(path, true);
+            }
+            else
+            {
+                sw = new StreamWriter(path);
+                sw.WriteLine("ID|WroteBy|CreateDate|Message|Language|Language|Location|ConfigurationName|LemmatizedMessage|" + Publication.END_LINE);
+
+            }
             for (int i = init; i < init + quantity && i < TotalPublications; i++)
             {
                 IPublication publication = GetPublicationInIndex(i);
@@ -210,8 +225,8 @@ namespace SocialNetworkConnection
                 IPublication parsedPublication = Publication.ParsePublication(line);
                 lock (this)
                 {
-                        publications.Add(parsedPublication);
-                
+                    publications.Add(parsedPublication);
+
                 }
 
 
@@ -262,6 +277,16 @@ namespace SocialNetworkConnection
                     }
                     publications.Add(id, publication);
                     TotalPublications++;
+                }
+                else
+                {
+                    
+                    publication.Id = id + "" + rs.Next(1, 1000000);
+                    while (publications.ContainsKey(publication.Id))
+                    {
+                        publication.Id = id + "" +rs.Next(1, 1000000);
+                    }
+                    publications.Add(publication.Id, publication);
                 }
             }
         }

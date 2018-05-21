@@ -34,6 +34,11 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +52,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FacebookConnection\FacebookConnection.csproj">
+      <Project>{612266a8-9f54-4319-ab93-9da8067e5593}</Project>
+      <Name>FacebookConnection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialNetworkConnection\SocialNetworkConnection.csproj">
+      <Project>{9ef5d099-b8b4-4672-a5f7-ad9f2022ba7f}</Project>
+      <Name>SocialNetworkConnection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextualProcessor\TextualProcessor.csproj">
+      <Project>{a3a3618e-8bc9-45c8-bb95-ef8bdcf7416e}</Project>
+      <Name>TextualProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwitterConnection\TwitterConnection.csproj">
+      <Project>{83f71db3-927d-4666-b195-cab550790f6d}</Project>
+      <Name>TwitterConnection</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
