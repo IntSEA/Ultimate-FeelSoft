@@ -137,7 +137,6 @@ namespace WebScrapper
             this.tbxPublication.Location = new System.Drawing.Point(27, 42);
             this.tbxPublication.Multiline = true;
             this.tbxPublication.Name = "tbxPublication";
-            this.tbxPublication.ReadOnly = true;
             this.tbxPublication.Size = new System.Drawing.Size(330, 162);
             this.tbxPublication.TabIndex = 15;
             // 
@@ -203,7 +202,7 @@ namespace WebScrapper
             this.Controls.Add(this.gbxFunctions);
             this.Controls.Add(this.gbxPublications);
             this.Name = "PublicationViewerControl";
-            this.Size = new System.Drawing.Size(455, 473);            
+            this.Size = new System.Drawing.Size(455, 473);
             this.gbxPublications.ResumeLayout(false);
             this.gbxPublications.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();

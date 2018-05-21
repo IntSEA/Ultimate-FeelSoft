@@ -14,7 +14,10 @@ namespace WebScrapper
     public partial class PublicationViewerControl : UserControl
     {
         public static List<IPublication> publications2 = new List<IPublication>();
-        public static List<IFilteredStream> streams = new List<IFilteredStream>();
+        public static Thread threadStream;
+        public static IFilteredStream stream;
+        public static Thread threadShow;
+
         public PublicationViewerControl()
         {
             InitializeComponent();
@@ -24,42 +27,48 @@ namespace WebScrapper
         public void SetMain(WebScrapperViewer main)
         {
             this.main = main;
-            
+
         }
 
         private void InitStreams()
         {
             //borrar despues          
 
-            List<IQueryConfiguration> configs = main.GetCurrentsConfigurations(); ;
-            if (configs.Count > 0 && streams.Count==0)
+            List<IQueryConfiguration> configs = main.GetCurrentsConfigurations();
+
+
+
+            if (configs.Count > 0 && threadStream == null)
             {
+                stream = Stream.CreateFilteredStream();
+                stream.TweetMode = TweetMode.Extended;
                 foreach (var config in configs)
                 {
-                    var stream = Stream.CreateFilteredStream();
                     foreach (var key in config.Keywords)
                     {
                         stream.AddTrack(key);
                     }
-                    Thread threadStream = new Thread(() =>
+
+                }
+
+                threadStream = new Thread(() =>
+                {
+                    stream.MatchingTweetReceived += (sender, args) =>
                     {
-                        stream.MatchingTweetReceived += (sender, args) =>
+                        IPublication publication = TwitterSearcher.ParseTweetToPublication(args.Tweet, configs[0]);
+                        lock (this)
                         {
-                            IPublication publication = TwitterSearcher.ParseTweetToPublication(args.Tweet, configs[0]);
-                            lock (this)
-                            {
-                                publications2.Add(publication);
-                            }
+                            publications2.Add(publication);
+                        }
 
-                        };
-                        stream.StartStreamMatchingAllConditions();
-                    });
-                    threadStream.Start();
-                }     
+                    };
+                    stream.StartStreamMatchingAllConditions();
+                });
+                threadStream.Start();
 
 
-                
-                Thread threadShow = new Thread(() =>
+
+                threadShow = new Thread(() =>
                 {
 
                     while (publications2.Count >= 0)
@@ -75,7 +84,7 @@ namespace WebScrapper
                         }
                     }
                 });
-                
+
                 threadShow.Start();
                 //Recordar las privacidades queries, y configurations, quitar static de parse tweet y quitar
                 //delegado
@@ -89,11 +98,16 @@ namespace WebScrapper
 
         private void StopStreams()
         {
-            foreach (var stream in streams)
+            if (threadStream != null && stream != null)
             {
-                stream.PauseStream();                
+
+                threadStream.Abort();
+                threadShow.Abort();
+                threadShow = null;
+                threadStream = null;
+                stream.PauseStream();
+                stream = null;
             }
-            streams.Clear();
         }
 
         delegate void show(IList<IPublication> publications);
@@ -113,7 +127,9 @@ namespace WebScrapper
                 //MessageBox.Show("Publicaciones encontradas");
                 lock (this)
                 {
-                    this.publications.AddRange(publications);
+                    
+                    this.publications.AddRange((IPublication[])publications2.ToArray().Clone());
+                    publications2.Clear();
                     SetDefaultViewConfigToPublications();
                 }
             }
@@ -252,7 +268,7 @@ namespace WebScrapper
                 {
                     this.publications.AddRange(publications2);
                 }
-                
+
             }
             lock (this)
             {

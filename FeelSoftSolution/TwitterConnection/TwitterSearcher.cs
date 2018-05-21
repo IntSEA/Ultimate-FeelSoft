@@ -131,10 +131,7 @@ namespace TwitterConnection
             queryConfiguration.MaxPublicationCount = totalSearchesByDate+1000;
             foreach (var key in queryConfiguration.Keywords)
             {
-                for (int i = 0; i < dates.Count; i++)
-                {
-                    myQuery.SinceDate = dates[i];
-                    myQuery.UntilDate = dates[i].AddDays(1);
+                
                     ISearchTweetsParameters parameters = ParseSearchTweetsParameters(myQuery, key);
                     IList<ITweet> tweets = Search.SearchTweets(parameters).ToList();
                     ParseTweets(tweets, publications, queryConfiguration);
@@ -142,7 +139,7 @@ namespace TwitterConnection
                     {
                         break;
                     }
-                }
+                
 
 
             }

@@ -9,6 +9,7 @@ namespace SocialNetworkConnection
 {
     public class SearchDataSet : ISearchDataSet
     {
+        public static int count = 0;
         public static Random rs = new Random();
         private string basePath;
         string baseName;
@@ -281,14 +282,20 @@ namespace SocialNetworkConnection
                 }
                 else
                 {
-                    
-                    publication.Id = id + "" + rs.Next(1, 1000000);
-                    while (publications.ContainsKey(publication.Id))
+                    string preId = id;
+                    preId += count;
+                    while (publications.ContainsKey(preId))
                     {
-                        publication.Id = id + "" +rs.Next(1, 1000000);
+                        count++;
+                        preId = id;
+                        preId += count;
                     }
-                    publications.Add(publication.Id, publication);
+                    publication.Id = preId;
+                    publications.Add(publication.Id,publication);
+                    TotalPublications++;
+
                 }
+
             }
         }
 

@@ -33,11 +33,11 @@ namespace WebScrapper
         {
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.rdbTwitter = new System.Windows.Forms.RadioButton();
-            this.queriesControl = new QueriesControl();
+            this.queriesControl = new WebScrapper.QueriesControl();
             this.lblLoad = new System.Windows.Forms.Label();
             this.lblSelectSocialNetwork = new System.Windows.Forms.Label();
             this.rdbFacebook = new System.Windows.Forms.RadioButton();
-            this.publicationViewerControl = new PublicationViewerControl();
+            this.publicationViewerControl = new WebScrapper.PublicationViewerControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -70,6 +70,7 @@ namespace WebScrapper
             this.rdbTwitter.Text = "Twitter";
             this.rdbTwitter.UseVisualStyleBackColor = true;
             this.rdbTwitter.CheckedChanged += new System.EventHandler(this.RdbCheckedChanged);
+            this.rdbTwitter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyUpEvent);
             // 
             // queriesControl
             // 
@@ -139,7 +140,7 @@ namespace WebScrapper
         private int selectedSocialNetwork;
         private PublicationViewerControl publicationViewerControl;
         private System.Windows.Forms.RadioButton rdbTwitter;
-        private  QueriesControl queriesControl;
+        private QueriesControl queriesControl;
         private System.Windows.Forms.Label lblSelectSocialNetwork;
         private System.Windows.Forms.RadioButton rdbFacebook;
         private ISearchDataSet dataset;
@@ -153,4 +154,3 @@ namespace WebScrapper
 
     }
 }
-

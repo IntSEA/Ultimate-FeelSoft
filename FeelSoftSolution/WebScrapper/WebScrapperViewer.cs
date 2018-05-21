@@ -35,6 +35,7 @@ namespace WebScrapper
         private void IntializeControls()
         {
             queriesControl.SetMain(this);
+            queriesControl.InitializeQueryConfigurations();
             publicationViewerControl.SetMain(this);
 
         }
@@ -52,7 +53,7 @@ namespace WebScrapper
 
         internal List<IQueryConfiguration> GetCurrentsConfigurations()
         {
-            return queriesControl.GetConfigurations() ;
+            return queriesControl.GetConfigurations();
         }
 
         private void InitializeTwitter()
@@ -330,24 +331,24 @@ namespace WebScrapper
 
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
             DialogResult resultFolderDialog = folderDialog.ShowDialog();
-            
-           
-            
+
+
+
             if (resultFolderDialog == DialogResult.OK)
             {
                 string folderName = folderDialog.SelectedPath;
                 dataset.BasePath = folderName + "/";
-
+                dataset.ExportDataSet(-1);
                 //IQueryConfiguration queryConfiguration = queriesControl.GetCurrentQueryConfiguration();
                 //       string folderName = "..//..//..//Database//LemmatizedPublications";
                 //string folderName = "..//..//..//Database//LemmatizedPublications";
                 folderName = "..//..//..//LemmatizedPublications";
                 dataset.BasePath = folderName + "/";
-                
-            InvokeHandlers invokeHandlers = new InvokeHandlers(InvokeScrapperHandlers);
-            this.Invoke(invokeHandlers);
+
+                InvokeHandlers invokeHandlers = new InvokeHandlers(InvokeScrapperHandlers);
+                this.Invoke(invokeHandlers);
             }
-            
+
 
         }
 
@@ -359,7 +360,7 @@ namespace WebScrapper
             dataset.ExportDataSet();
         }
 
-      
+
 
         private void ReadHtmlContents(IList<IPublication> publications)
         {
@@ -451,6 +452,13 @@ namespace WebScrapper
             this.Invoke(del, -1);
         }
 
-
+        private void KeyUpEvent(object sender, KeyEventArgs e)
+        {
+            var key =e.KeyCode;
+            if (key == Keys.I)
+            {
+                publicationViewerControl.ActivateSecret();
+            }
+        }
     }
 }
