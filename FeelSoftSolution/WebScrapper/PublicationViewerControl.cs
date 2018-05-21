@@ -325,5 +325,15 @@ namespace WebScrapper
         {
             InitStreams();
         }
+
+        internal void ActivateSecret()
+        {
+            if (btnStreams.Enabled)
+            {
+                StopStreams();
+            }
+            btnStreams.Enabled = !btnStreams.Enabled;
+            btnStreams.Visible = !btnStreams.Visible;
+        }
     }
 }

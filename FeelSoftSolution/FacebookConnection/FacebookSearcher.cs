@@ -302,11 +302,11 @@ namespace FacebookConnection
                     {
                         var response = responsesPages.Last();
                         bool isEmpty = IsEmptyData(response.data);
-                        
+
                         if (!isEmpty)
                         {
-                           bool res= AddPublications(response, publications, queryConfiguration);
-                            if (publications.Count > totalPublications * 2 || !res||responsesPages.Count>2)
+                            bool res = AddPublications(response, publications, queryConfiguration);
+                            if (publications.Count > totalPublications * 2 || !res || responsesPages.Count > 0)
                             {
                                 makeRequest = false;
                             }

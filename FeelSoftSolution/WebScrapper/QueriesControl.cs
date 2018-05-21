@@ -12,11 +12,10 @@ namespace WebScrapper
         {
             InitializeComponent();
             InitializeDataContainers();
-            InitializeQueryConfigurations();
 
         }
 
-        private void InitializeQueryConfigurations()
+        public void InitializeQueryConfigurations()
         {
             string fajardoConfig = "..//..//..//SocialNetworkConnection/Resources/SocialNetworks/Fajardo/Configurations/FajardoConfig.qnc";
             string petroConfig = "..//..//..//SocialNetworkConnection/Resources/SocialNetworks/Petro/Configurations/PetroConfig.qnc";
